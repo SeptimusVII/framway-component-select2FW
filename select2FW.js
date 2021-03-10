@@ -18,7 +18,7 @@ module.exports = function(app){
         select2FW.select2 = select2FW.$el.select2({
             minimumResultsForSearch: 5,
             width: '100%',
-            dropdownParent: select2FW.$el.attr('data-container') == 'body' ? $(document.body) : select2FW.$el.parent(),
+            dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: function(data,container) {
                 if (data.element) {
                     $(container).addClass($(data.element).attr("class"));
