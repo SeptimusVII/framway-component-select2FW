@@ -16,7 +16,7 @@ module.exports = function(app){
         select2FW.$el.wrap('<div class="select2FW-wrapper"></div>');
         select2FW.classes = select2FW.$el.attr('class');
         select2FW.select2 = select2FW.$el.select2({
-            minimumResultsForSearch: 5,
+            minimumResultsForSearch: parseInt(select2FW.getData('minimumresultsforsearch',5)),
             width: '100%',
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: function(data,container) {
