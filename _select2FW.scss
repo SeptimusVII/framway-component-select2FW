@@ -8,6 +8,10 @@ select:not(.custom){display: none;}
 			margin-bottom: $spacing/2;
 			margin-right: $spacing/2;
 		}
+		.input-group>&,
+		.form-group>&{margin-bottom: 0;
+			@include media-max(xs){margin-bottom: 0;}
+		}
 	}
 	.select2-container .select2-selection{@extend %input; height: auto; margin-bottom: 0px; margin-right: 0; position: relative;}
 
