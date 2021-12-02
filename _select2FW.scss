@@ -3,10 +3,10 @@ select:not(.custom){display: none;}
 	position: relative;
 	// general looking
 	.select2-container {
-		margin-bottom: $spacing; margin-right: $spacing;
+		margin-bottom: $spacing; margin-right: 0;
 		@include media-max(xs){
 			margin-bottom: $spacing/2;
-			margin-right: $spacing/2;
+			margin-right: 0;
 		}
 		.input-group>&,
 		.form-group>&{margin-bottom: 0;
