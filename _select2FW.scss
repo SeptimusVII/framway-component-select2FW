@@ -52,6 +52,9 @@ body{
 		ul:before{display: none;}
 	}
 	.select2-results__option{padding: .35em .65em; @include ellipsis();}
+
+	.select2-container--default .select2-results__option--highlighted[aria-selected]{background: change-color($primary,$lightness:15%);color: contrastFW(input(font-color),change-color($primary,$lightness:15%));}
+	.select2-container--default .select2-results__option[aria-selected=true]{background: change-color($primary,$lightness:10%);color: contrastFW(input(font-color),change-color($primary,$lightness:10%));}
 }
 
 // required
