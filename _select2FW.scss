@@ -38,6 +38,10 @@ select:not(.custom){display: none;}
 	.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{margin-right: 5px; margin-top: -1px; display: block; float: left;}
 
 	ul{@extend .no-pbreak !optional;}
+
+	td &:last-child .select2-container {margin-bottom: 0;
+		@include media-max(xs){margin-bottom: 0;}
+	}
 }
 
 // dropdown
