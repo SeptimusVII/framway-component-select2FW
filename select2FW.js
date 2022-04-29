@@ -50,6 +50,11 @@ module.exports = function(app){
         utils.addHtmlHook('select:not(.custom)', function(item){
             item.select2FW();
         });
+
+        $(document).on('select2:open', () => {
+            document.querySelector('.select2-container--open .select2-search__field').focus();
+        });
+
     });
 
     return Select2FW;
