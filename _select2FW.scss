@@ -13,6 +13,7 @@ select:not(.custom){display: none;}
 			@include media-max(xs){margin-bottom: 0;}
 		}
 		&.no-bg {
+			.select2-selection:focus,
 			.select2-selection{background: none; border-color: transparent; color: inherit;}
 			+.select2-container--open{
 				.select2-dropdown--above{border-bottom: input(border-size) solid input(border-color);}
