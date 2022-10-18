@@ -75,13 +75,21 @@ body{
 // required
 select{
 	&[required]{
-		&:valid{
-			&+.select2-container .select2-selection{@extend %input[required]:valid;}
+		@if function-exists(input-valid) {
+			&:valid{
+				&+.select2-container .select2-selection{@extend %input[required]:valid;}
+			}
 		}
-		&:invalid{
-			&+.select2-container .select2-selection{@extend %input[required]:invalid;}
+		@if function-exists(input-invalid) {
+			&:invalid{
+				&+.select2-container .select2-selection{@extend %input[required]:invalid;}
+			}
 		}
 	}
-	&.valid{@extend select[required]:valid;}
-	&.invalid{@extend select[required]:invalid;}
+	@if function-exists(input-valid) {
+		&.valid{@extend select[required]:valid;}
+	}
+	@if function-exists(input-invalid) {
+		&.invalid{@extend select[required]:invalid;}
+	}
 }
