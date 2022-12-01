@@ -21,7 +21,7 @@ module.exports = function(app){
             width: '100%',
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: function(data,container) {
-                $(container).get(0).className = "select2-selection__rendered";
+                // $(container).get(0).className = "select2-selection__rendered";
                 if (data.element) {
                     $(container).addClass($(data.element).attr("class"));
                 }
