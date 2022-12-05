@@ -14,29 +14,30 @@ module.exports = function(app){
     Select2FW.prototype.onCreate = function(){
         var select2FW = this;
         select2FW.$el.wrap('<div class="select2FW-wrapper"></div>');
-        select2FW.classes = select2FW.$el.attr('class');
-        select2FW.style   = select2FW.$el.attr('style');
+        select2FW.classes           = select2FW.$el.attr('class');
+        select2FW.style             = select2FW.$el.attr('style');
+        select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
+            // $(container).get(0).className = "select2-selection__rendered";
+            if (data.element) {
+                $(container).addClass($(data.element).attr("class"));
+            }
+            return data.text;
+        };
+        select2FW.templateResult    = typeof window[select2FW.getData('templateresult')] == 'function' ? window[select2FW.getData('templateresult')] : function (data, container) {
+            if (data.element) {
+                $(container).addClass($(data.element).attr("class"));
+            }
+            return data.text;
+        };
         select2FW.select2 = select2FW.$el.select2({
             minimumResultsForSearch: parseInt(select2FW.getData('minimumresultsforsearch',5)),
             width: '100%',
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
-            templateSelection: function(data,container) {
-                // $(container).get(0).className = "select2-selection__rendered";
-                if (data.element) {
-                    $(container).addClass($(data.element).attr("class"));
-                }
-                return data.text;
-            },
-            templateResult: function (data, container) {
-                if (data.element) {
-                    $(container).addClass($(data.element).attr("class"));
-                }
-                return data.text;
-            }
+            templateSelection: select2FW.templateSelection,
+            templateResult: select2FW.templateResult,
         });
 
         select2FW.$el.closest('.select2FW-wrapper').find('.select2-container').first().addClass(select2FW.classes).attr('style',select2FW.style);
-
         if(Select2FW.debug) console.log('Select2FW has been created \n ',select2FW);
         return select2FW;
     }
