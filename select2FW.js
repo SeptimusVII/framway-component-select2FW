@@ -13,9 +13,10 @@ module.exports = function(app){
     
     Select2FW.prototype.onCreate = function(){
         var select2FW = this;
-        select2FW.$el.wrap('<div class="select2FW-wrapper"></div>');
         select2FW.classes           = select2FW.$el.attr('class');
         select2FW.style             = select2FW.$el.attr('style');
+        select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
+        select2FW.$el.wrap('<div class="select2FW-wrapper '+select2FW.classWrapper+'"></div>');
         select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
             // $(container).get(0).className = "select2-selection__rendered";
             if (data.element) {
