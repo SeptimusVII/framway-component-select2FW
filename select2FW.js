@@ -42,6 +42,17 @@ module.exports = function(app){
         return select2FW;
     }
 
+
+
+    Select2FW.prototype.reset = function(){
+        var select2FW = this;
+        select2FW.$el.unwrap('.select2FW-wrapper');
+        select2FW.$el.select2('destroy');
+        if(Select2FW.debug) console.log('Select2FW has been reseted \n ',select2FW);
+    }
+    Select2FW.prototype.destroy = function(){
+        this.$el.closest('.select2FW-wrapper').remove();
+    }
     Select2FW.prototype.onDestroy = function(){
         var select2FW = this;
         select2FW.$el.select2('destroy');
@@ -51,7 +62,8 @@ module.exports = function(app){
     $(function () {
         $('select').not('.custom').select2FW();
         utils.addHtmlHook('select:not(.custom)', function(item){
-            item.select2FW();
+            if (item.closest('.select2FW-wrapper').length == 0) 
+                item.select2FW();
         });
 
         $(document).on('select2:open', () => {
