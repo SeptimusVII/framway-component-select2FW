@@ -1,3 +1,4 @@
+$z_header: 100 !default;
 select:not(.custom){display: none;}
 .select2FW-wrapper{
 	position: relative;
@@ -65,7 +66,8 @@ select:not(.custom){display: none;}
 // dropdown
 body{ 
 	.select2-dropdown{ background: input(background); color: contrastFW(input(font-color),input(background)); border: input(border-size) solid input(border-color);
-		left: 50% !important; transform: translateX(-50%); width: auto !important; min-width: 100%;
+		z-index: $z_header - 1;
+		width: auto !important; min-width: 100%;
 	  	@if input(radius) == true{border-radius: $radius;}
 	  	@else{border-radius: 0;}
 		ul:before{display: none;}
