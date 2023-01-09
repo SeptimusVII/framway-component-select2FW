@@ -1,8 +1,9 @@
 select:not(.custom){display: none;}
 .select2FW-wrapper{
 	position: relative;
+	min-width: 200px;
 	// general looking
-	.select2-container {
+	.select2-container { width: 100%;
 		margin-bottom: $spacing; margin-right: 0;
 		@include media-max(xs){
 			margin-bottom: $spacing*0.5;
@@ -64,10 +65,12 @@ select:not(.custom){display: none;}
 // dropdown
 body{ 
 	.select2-dropdown{ background: input(background); color: contrastFW(input(font-color),input(background)); border: input(border-size) solid input(border-color);
+		left: 50% !important; transform: translateX(-50%); width: auto !important; min-width: 100%;
 	  	@if input(radius) == true{border-radius: $radius;}
 	  	@else{border-radius: 0;}
 		ul:before{display: none;}
 	}
+	.select2-results__options{max-width: 100vw;}
 	.select2-results__option{padding: .35em .65em; @include ellipsis();}
 
 	.select2-container--default .select2-results__option--highlighted[aria-selected]{background: change-color($primary,$lightness:15%);color: contrastFW(input(font-color),change-color($primary,$lightness:15%));}
