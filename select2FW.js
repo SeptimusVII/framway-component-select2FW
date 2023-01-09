@@ -18,7 +18,8 @@ module.exports = function(app){
         select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
         select2FW.$el.wrap('<div class="select2FW-wrapper '+select2FW.classWrapper+'"></div>');
         select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
-            // $(container).get(0).className = "select2-selection__rendered";
+            if ($(container).get(0))
+                $(container).get(0).className = "select2-selection__rendered";
             if (data.element) {
                 $(container).addClass($(data.element).attr("class"));
             }
@@ -69,6 +70,13 @@ module.exports = function(app){
 
         $(document).on('select2:open', () => {
             document.querySelector('.select2-container--open .select2-search__field').focus();
+            var dropdown = $('.select2-dropdown .select2-results');
+            setTimeout(function(){
+                dropdown.attr('style','');
+                if ((dropdown.offset().left + dropdown.outerWidth()).toFixed(2) > viewport.width) {
+                    dropdown.css('max-width',(viewport.width-15) - dropdown.offset().left);
+                }
+            })
         });
 
     });
