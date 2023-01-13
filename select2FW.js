@@ -18,7 +18,7 @@ module.exports = function(app){
         select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
         select2FW.$el.wrap('<div class="select2FW-wrapper '+select2FW.classWrapper+'"></div>');
         select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
-            if ($(container).get(0))
+            if ($(container).get(0) && !select2FW.$el.get(0).hasAttribute('multiple'))
                 $(container).get(0).className = "select2-selection__rendered";
             if (data.element) {
                 $(container).addClass($(data.element).attr("class"));

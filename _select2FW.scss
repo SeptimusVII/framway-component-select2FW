@@ -35,17 +35,18 @@ select:not(.custom){display: none;}
 	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color: transparent transparent currentColor; border-width: 0 6px 8px;}
 
 	// multiple
-	.select2-container--default .select2-selection--multiple{padding: 0 0.3em 0.25em;min-height: 0;}
+	.select2-container--default .select2-selection--multiple{padding: 0.25em;min-height: 0;}
 	.select2-container--default.select2-container--focus .select2-selection--multiple{
 		background-color: input-focus(background);
     	border-color: input-focus(border-color);
     	color: contrastFW(input-focus(font-color),input-focus(background));
     }
-	.select2-container .select2-selection--multiple ul.select2-selection__rendered{}
-	.select2-container--default .select2-selection--multiple ul.select2-selection__rendered{padding: 0; }
+	.select2-container .select2-selection--multiple ul.select2-selection__rendered{display: flex; flex-wrap: wrap;}
+	.select2-container--default .select2-selection--multiple ul.select2-selection__rendered{padding: 0; margin-bottom: -0.25em;line-height: 0.9; font-size: 0.9em;}
 	.select2-container--default .select2-selection--multiple ul.select2-selection__rendered>.select2-selection__rendered,
 	.select2-container--default .select2-selection--multiple .select2-selection__choice{
-		line-height: 0.9; font-size: 0.9em; padding: .3em .4em .4em; margin: .25em .25em 0 0; 
+		float:none;
+		padding: .3em .4em .4em; margin: 0 .25em 0.25em 0; 
 		color: contrastFW(input(font-color),change-color($primary,$lightness:15%));
 		background-color: change-color($primary,$lightness:15%);
     	border-color: change-color($primary,$lightness:15%);
