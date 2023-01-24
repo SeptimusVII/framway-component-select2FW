@@ -1,11 +1,11 @@
 require('select2/dist/css/select2.min.css');
-require('select2');
+require('select2/dist/js/select2.full.min.js');
 module.exports = function(app){
     var Select2FW = Object.getPrototypeOf(app).Select2FW = new app.Component("select2FW");
     // Select2FW.debug = true;
     Select2FW.createdAt      = "2.0.0";
     Select2FW.lastUpdate     = "2.0.0";
-    Select2FW.version        = "1";
+    Select2FW.version        = "1.1";
     // Select2FW.factoryExclude = true;
     // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
     // Select2FW.requires       = [];
@@ -16,6 +16,7 @@ module.exports = function(app){
         select2FW.classes           = select2FW.$el.attr('class');
         select2FW.style             = select2FW.$el.attr('style');
         select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
+        select2FW.withinModal       = select2FW.$el.closest('.modalFW').length ? true : false;
         select2FW.$el.wrap('<div class="select2FW-wrapper '+select2FW.classWrapper+'"></div>');
         select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
             if ($(container).get(0) && !select2FW.$el.get(0).hasAttribute('multiple'))
@@ -37,6 +38,7 @@ module.exports = function(app){
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: select2FW.templateSelection,
             templateResult: select2FW.templateResult,
+            dropdownCssClass: (select2FW.withinModal ? 'withinModal' : select2FW.getData('container') == 'body' ? 'bodyLevel' : ''),
         });
 
         select2FW.$el.closest('.select2FW-wrapper').find('.select2-container').first().addClass(select2FW.classes).attr('style',select2FW.style);
