@@ -17,6 +17,7 @@ module.exports = function(app){
         select2FW.style             = select2FW.$el.attr('style');
         select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
         select2FW.withinModal       = select2FW.$el.closest('.modalFW').length ? true : false;
+        select2FW.classDropdown     = (select2FW.classDropdown !== undefined) ? select2FW.classDropdown : select2FW.getData('classdropdown', '');
         select2FW.$el.wrap('<div class="select2FW-wrapper '+select2FW.classWrapper+'"></div>');
         select2FW.templateSelection = typeof window[select2FW.getData('templateselection')] == 'function' ? window[select2FW.getData('templateselection')] : function(data,container) {
             if ($(container).get(0) && !select2FW.$el.get(0).hasAttribute('multiple'))
@@ -32,13 +33,20 @@ module.exports = function(app){
             }
             return data.text;
         };
+
+        if (select2FW.withinModal)
+            select2FW.classDropdown += ' withinModal';
+        else if(select2FW.getData('container') == 'body')
+            select2FW.classDropdown += ' bodyLevel';
+
+
         select2FW.select2 = select2FW.$el.select2({
             minimumResultsForSearch: parseInt(select2FW.getData('minimumresultsforsearch',5)),
             width: '100%',
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: select2FW.templateSelection,
             templateResult: select2FW.templateResult,
-            dropdownCssClass: (select2FW.withinModal ? 'withinModal' : select2FW.getData('container') == 'body' ? 'bodyLevel' : ''),
+            dropdownCssClass: select2FW.classDropdown,
         });
 
         select2FW.$el.closest('.select2FW-wrapper').find('.select2-container').first().addClass(select2FW.classes).attr('style',select2FW.style);
