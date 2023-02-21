@@ -4,8 +4,8 @@ module.exports = function(app){
     var Select2FW = Object.getPrototypeOf(app).Select2FW = new app.Component("select2FW");
     // Select2FW.debug = true;
     Select2FW.createdAt      = "2.0.0";
-    Select2FW.lastUpdate     = "2.0.0";
-    Select2FW.version        = "1.1.1";
+    Select2FW.lastUpdate     = "2.0.2";
+    Select2FW.version        = "1.1.2";
     // Select2FW.factoryExclude = true;
     // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
     // Select2FW.requires       = [];
@@ -15,6 +15,7 @@ module.exports = function(app){
         var select2FW = this;
         select2FW.classes           = select2FW.$el.attr('class');
         select2FW.style             = select2FW.$el.attr('style');
+        select2FW.placeholder       = select2FW.getAttr('placeholder',false);
         select2FW.classWrapper      = (select2FW.classWrapper !== undefined) ? select2FW.classWrapper : select2FW.getData('classwrapper', '');
         select2FW.withinModal       = select2FW.$el.closest('.modalFW').length ? true : false;
         select2FW.classDropdown     = (select2FW.classDropdown !== undefined) ? select2FW.classDropdown : select2FW.getData('classdropdown', '');
@@ -47,6 +48,7 @@ module.exports = function(app){
             templateSelection: select2FW.templateSelection,
             templateResult: select2FW.templateResult,
             dropdownCssClass: select2FW.classDropdown,
+            placeholder: select2FW.placeholder
         });
 
         select2FW.$el.closest('.select2FW-wrapper').find('.select2-container').first().addClass(select2FW.classes).attr('style',select2FW.style);
