@@ -4,8 +4,8 @@ module.exports = function(app){
     var Select2FW = Object.getPrototypeOf(app).Select2FW = new app.Component("select2FW");
     // Select2FW.debug = true;
     Select2FW.createdAt      = "2.0.0";
-    Select2FW.lastUpdate     = "2.0.2";
-    Select2FW.version        = "1.1.2";
+    Select2FW.lastUpdate     = "2.0.3";
+    Select2FW.version        = "1.2";
     // Select2FW.factoryExclude = true;
     // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
     // Select2FW.requires       = [];
@@ -44,12 +44,19 @@ module.exports = function(app){
         select2FW.select2 = select2FW.$el.select2({
             minimumResultsForSearch: parseInt(select2FW.getData('minimumresultsforsearch',5)),
             width: '100%',
+            allowClear: (select2FW.placeholder?true:false),
             dropdownParent: select2FW.getData('container') == 'body' ? $(document.body) : select2FW.$el.parent(),
             templateSelection: select2FW.templateSelection,
             templateResult: select2FW.templateResult,
             dropdownCssClass: select2FW.classDropdown,
             placeholder: select2FW.placeholder
         });
+
+        if ($('label[for='+select2FW.$el.attr('id')+']').length){
+            $('label[for='+select2FW.$el.attr('id')+']').on('click',function(){
+                select2FW.$el.select2('open');
+            })
+        }
 
         select2FW.$el.closest('.select2FW-wrapper').find('.select2-container').first().addClass(select2FW.classes).attr('style',select2FW.style);
         if(Select2FW.debug) console.log('Select2FW has been created \n ',select2FW);

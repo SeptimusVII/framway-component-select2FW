@@ -29,6 +29,8 @@ select:not(.custom){display: none;}
 	// selection text field
 	.select2-container--default .select2-selection--single .select2-selection__rendered{line-height: inherit; color: inherit;}
 	.select2-container .select2-selection--single .select2-selection__rendered{padding-left: 0;}
+	.select2-container--default .select2-selection--single .select2-selection__placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
+	.select2-container--default .select2-selection--single .select2-selection__clear{width: 28px; text-align: center;margin-right: -14px;}
 
 	// arrow
 	.select2-container--default .select2-selection--single .select2-selection__arrow{height: 100%; width: 28px;}
