@@ -5,7 +5,7 @@ module.exports = function(app){
     // Select2FW.debug = true;
     Select2FW.createdAt      = "2.0.0";
     Select2FW.lastUpdate     = "2.0.3";
-    Select2FW.version        = "1.2";
+    Select2FW.version        = "1.2.1";
     // Select2FW.factoryExclude = true;
     // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
     // Select2FW.requires       = [];
@@ -52,8 +52,8 @@ module.exports = function(app){
             placeholder: select2FW.placeholder
         });
 
-        if ($('label[for='+select2FW.$el.attr('id')+']').length){
-            $('label[for='+select2FW.$el.attr('id')+']').on('click',function(){
+        if ($('label[for="'+select2FW.$el.attr('id')+'"]').length){
+            $('label[for="'+select2FW.$el.attr('id')+'"]').on('click',function(){
                 select2FW.$el.select2('open');
             })
         }
