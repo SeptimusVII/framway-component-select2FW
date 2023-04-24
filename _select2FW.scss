@@ -30,9 +30,7 @@ select:not(.custom){display: none;}
 	.select2-container--default .select2-selection--single .select2-selection__rendered{line-height: inherit; color: inherit;}
 	.select2-container .select2-selection--single .select2-selection__rendered{padding-left: 0;}
 	.select2-container--default .select2-selection--single .select2-selection__placeholder{color: contrastFW(input(placeholder-font-color),input(background));}
-	.select2-container--default .select2-selection--single .select2-selection__clear{width: 28px; text-align: center;margin-right: -14px;}
-
-	// arrow
+	.select2-container--default .select2-selection--single .select2-selection__clear{width: 2ch; text-align: center; font-size: 1.35em;}
 	.select2-container--default .select2-selection--single .select2-selection__arrow{height: 100%; width: 28px;}
 	.select2-container--default .select2-selection--single .select2-selection__arrow b{border-color: currentColor transparent transparent; border-width: 8px 6px 0; margin-left: 0; margin-top: 0; transform: translate(-50%,-50%); }
 	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color: transparent transparent currentColor; border-width: 0 6px 8px;}
@@ -46,7 +44,8 @@ select:not(.custom){display: none;}
     }
 	.select2-container .select2-selection--multiple ul.select2-selection__rendered{display: flex; flex-wrap: wrap; gap: 0.25rem}
 	.select2-container--default .select2-selection--multiple ul.select2-selection__rendered{padding: 0; margin-bottom: 0; }
-	.select2-container--default .select2-selection--multiple .select2-selection__rendered li{}
+	.select2-container--default .select2-selection--multiple .select2-selection__clear{float: none; margin-right: 0; margin-top: 0; padding: 0; font-size: 1.35em; width: 2ch; text-align: center; align-self: center; line-height: 1; order: 1000; margin-left: auto; } // arrow
+	.select2-container--default .select2-selection--multiple .select2-selection__rendered li{max-width: 90%; max-width: calc(100% - 4ch);}
 	.select2-container--default .select2-selection--multiple ul.select2-selection__rendered>.select2-selection__rendered,
 	.select2-container--default .select2-selection--multiple .select2-selection__choice{
 		float:none;

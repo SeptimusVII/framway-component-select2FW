@@ -40,6 +40,9 @@ module.exports = function(app){
         else if(select2FW.getData('container') == 'body')
             select2FW.classDropdown += ' bodyLevel';
 
+        if (select2FW.$el.get(0).hasAttribute('multiple'))
+            select2FW.$el.find('option[value=""]').remove()
+
 
         select2FW.select2 = select2FW.$el.select2({
             minimumResultsForSearch: parseInt(select2FW.getData('minimumresultsforsearch',5)),
