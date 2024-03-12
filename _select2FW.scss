@@ -1,5 +1,7 @@
 $z_header: 100 !default;
-select:not(.custom){display: none;}
+select:not(.custom){display: none;
+	&.select2-hidden-accessible{display: block;}
+}
 .select2FW-wrapper{
 	position: relative;
 	min-width: 200px;
