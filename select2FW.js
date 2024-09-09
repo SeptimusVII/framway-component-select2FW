@@ -4,8 +4,8 @@ module.exports = function(app){
     var Select2FW = Object.getPrototypeOf(app).Select2FW = new app.Component("select2FW");
     // Select2FW.debug = true;
     Select2FW.createdAt      = "2.0.0";
-    Select2FW.lastUpdate     = "2.4.5";
-    Select2FW.version        = "1.2.3";
+    Select2FW.lastUpdate     = "2.5.1";
+    Select2FW.version        = "1.2.4";
     // Select2FW.factoryExclude = true;
     // Select2FW.loadingMsg     = "This message will display in the console when component will be loaded.";
     // Select2FW.requires       = [];

@@ -21,12 +21,24 @@ select:not(.custom){display: none;
 			.select2-selection:focus,
 			.select2-selection{background: none; border-color: transparent; color: inherit;}
 			+.select2-container--open{
-				.select2-dropdown--above{border-bottom: input(border-size) solid input(border-color);}
-				.select2-dropdown--below{border-top: input(border-size) solid input(border-color);}
+				.select2-dropdown--above{border-bottom: input(border-size) solid input(border-color); }
+				.select2-dropdown--below{border-top: input(border-size) solid input(border-color); }
 			}
 		}
 	}
 	.select2-container .select2-selection{@extend %input; height: auto; margin-bottom: 0px; margin-right: 0; position: relative;}
+	@if input(radius) {
+		.select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple, 
+		.select2-container--default.select2-container--open.select2-container--below .select2-selection--single{
+			border-bottom-left-radius: input(radius); 
+			border-bottom-right-radius: input(radius);
+		}
+		.select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple, 
+		.select2-container--default.select2-container--open.select2-container--above .select2-selection--single{
+			border-top-left-radius: input(radius); 
+			border-top-right-radius: input(radius);
+		}
+	}
 
 	// selection text field
 	.select2-container--default .select2-selection--single .select2-selection__rendered{line-height: inherit; color: inherit;}
