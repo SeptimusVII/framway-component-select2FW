@@ -49,6 +49,9 @@ select:not(.custom){display: none;
 	.select2-container--default .select2-selection--single .select2-selection__arrow b{border-color: currentColor transparent transparent; border-width: 8px 6px 0; margin-left: 0; margin-top: 0; transform: translate(-50%,-50%); }
 	.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{border-color: transparent transparent currentColor; border-width: 0 6px 8px;}
 
+	// disabled 
+	.select2-container--default.select2-container--disabled .select2-selection{background-color: input(background); cursor: not-allowed;}
+
 	// multiple
 	.select2-container--default .select2-selection--multiple{padding: 0.25rem;min-height: 0;}
 	.select2-container--default.select2-container--focus .select2-selection--multiple{
